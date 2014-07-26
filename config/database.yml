@@ -1,0 +1,18 @@
+common: &common
+  adapter:  postgresql
+  encoding: unicode
+  username:
+  password:
+  pool: 5
+
+development:
+  <<: *common
+  database: myk_dev
+
+test:
+  <<: *common
+  database: myk_test
+
+production:
+  <<: *common
+  database: myk
