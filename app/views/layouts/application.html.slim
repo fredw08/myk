@@ -1,0 +1,29 @@
+doctype html
+/[if lt IE 7]
+  | <html class="ie6">
+/[if IE 7]
+  | <html class="ie7">
+/[if IE 8]
+  | <html class="ie8">
+/[if IE 9]
+  | <html class="ie9">
+| <!--[if (gte IE 9)|!(IE)]<!-->
+html
+  | <!--<![endif]-->
+  head
+    title Mei Yee Kitchen!
+    meta[name='viewport' content='width=device-width, initial-scale=1']
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag    "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+  body
+    = render 'layouts/top_menu'
+    .container
+      == yield
+
+    /* .push */
+    /*   footer */
+    /*     p Copyright © 2014 #{link_to "Mei Yee Kitchen", "/"}. All rights reserved. */

@@ -1,0 +1,21 @@
+// add override variable before importing bootstrap, if necessary
+// refer to https://github.com/thomas-mcdonald/bootstrap-sass#configuration
+
+// $gridColumns: 24;
+// $gridColumnWidth: 32px;
+// $gridGutterWidth: 8px;
+// $gridColumnWidth1200: 40px;
+// $gridGutterWidth1200: 10px;
+// $gridColumnWidth768: 26px;
+// $gridGutterWidth768: 6px;
+
+// $fluidGridColumnWidth: 3.361344%;
+// $fluidGridGutterWidth: 0.840336%;
+
+// $inputBorderRadius: 0px;
+
+$font-size-base: 13px;
+$padding-base-vertical: 2px;
+$padding-base-horizontal: 6px;
+
+@import 'bootstrap';
