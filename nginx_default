@@ -1,0 +1,27 @@
+upstream myk {
+  server unix:/home/ubuntu/myk/tmp/sockets/puma.sock max_fails=0;
+}
+
+server {
+  listen 80   default_server;
+  server_name www.meiyeekichen.com;
+
+  root /home/ubuntu/myk/public;
+  client_max_body_size 20m;
+
+  proxy_redirect   off;
+  proxy_set_header Host              $http_host;
+  proxy_set_header X-Real-IP         $remote_addr;
+  proxy_set_header X-Forwarded-Proto $scheme;
+
+  location / {
+    alias   /home/ubuntu/myk/public;
+
+    # serve static files from defined root folder, fallback to upstream location
+    try_files $uri $uri/index.html $uri.html @myk;
+  }
+
+  location @myk {
+    proxy_pass http://myk;
+  }
+}
