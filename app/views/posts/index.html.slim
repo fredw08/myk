@@ -1,0 +1,21 @@
+.row
+  .col-md-8
+    - posts = []
+    - 5.times { posts << Post.new(title: 'testing', content: 'testing') }
+    - posts.each_with_index do |post, idx|
+      .panel.panel-info
+        .panel-heading
+          = post.title
+        .panel-body
+          - if idx < 5
+            img.img-responsive src=image_url("front_#{idx + 1}.jpg")
+        .panel-footer
+          .content
+            - 5.times
+              label = post.content
+          .foot-note
+            - 5.times
+              small = post.content
+              br
+  .col-md-4
+    = render 'share/menu'
