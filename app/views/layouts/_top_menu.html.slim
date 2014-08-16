@@ -1,16 +1,15 @@
 .navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
-      button.navbar-toggle data-toggle='collapse' data-target='.navbar-collapse'
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href='#'
-        strong MEI YEE KITCHEN
-    .navbar-collapse.collapse
+      strong
+        = link_to 'Mei Yee Kitchen', root_path, class: 'navbar-brand'
+    .collapse.navbar-collapse role="navigation"
+      ul.nav.navbar-nav
+        li = link_to 'Post', posts_path
+      ul.nav.navbar-nav
+        li = link_to 'Gallery', posts_path
       ul.nav.navbar-nav.navbar-right
-        li: a href='#' Products
-        li: a href='#' Contact Us
+        li = link_to 'Sign Out', posts_path
 
 .row(style='margin-top: 60px')
   .col-md-12
