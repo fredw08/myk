@@ -1,21 +1,22 @@
-.row
-  .col-md-8
-    - posts = []
-    - 5.times { posts << Post.new(title: 'testing', content: 'testing') }
-    - posts.each_with_index do |post, idx|
-      .panel.panel-info
-        .panel-heading
-          = post.title
-        .panel-body
-          - if idx < 5
-            img.img-responsive src=image_url("front_#{idx + 1}.jpg")
-        .panel-footer
-          .content
-            - 5.times
-              label = post.content
-          .foot-note
-            - 5.times
-              small = post.content
-              br
-  .col-md-4
-    = render 'share/menu'
+= render 'share/header'
+
+table class=index_table_class
+  thead: tr
+    th Item
+    th Title
+    th Content
+    th Post Date
+    th
+
+  tbody
+    - collection_instance.each do |item|
+      tr
+        td = item.id
+        td = link_to item.title, polymorphic_path(item)
+        td = item.content
+        td = item.post_date
+        td.link-icon.no-wrap
+          a<>[href=edit_polymorphic_path(item) title='edit']: i.fa.fa-lg.fa-edit
+          a<>[href=polymorphic_path(item) title='delete' data-confirm="Are you sure?" data-method=:delete]: i.fa.fa-lg.fa-times
+
+= render 'share/pagination'

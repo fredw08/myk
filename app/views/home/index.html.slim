@@ -1,26 +1,48 @@
-.row.centered
-  .col-md-12
-    h4
-      |Welome to Mei Yee Kitchen!!
-
 .row
-  .col-md-8.col-md-offset-2
-    .carousel.slide#carousel-example-generic data-ride='carousel'
-      ol.carousel-indicators
-        li.active data-slide-to="0" data-target="#carousel-example-generic"
-        - (1..4).each do |idx|
-          li data-slide-to="#{idx}" data-target="#carousel-example-generic"
+  .col-md-8
+    - posts = []
+    - 5.times { posts << Post.new(title: 'testing', content: 'testing') }
+    - posts.each_with_index do |post, idx|
+      .panel.panel-info
+        .panel-heading
+          = post.title
+        .panel-body
+          - if idx < 5
+            img.img-responsive src=image_url("front_#{idx + 1}.jpg")
+        .panel-footer
+          .content
+            - 5.times
+              label = post.content
+          .foot-note
+            - 5.times
+              small = post.content
+              br
+  .col-md-4
+    = render 'share/menu'
 
-      .carousel-inner
-        .item.active
-          img.img-responsive src="#{image_url 'front_1.jpg'}"
-        - (2..5).each do |idx|
-          .item
-            img.img-responsive src=image_url("front_#{idx}.jpg")
+/* .row.centered */
+/*   .col-md-12 */
+/*     h4 */
+/*       |Welome to Mei Yee Kitchen!! */
 
-      a.left.carousel-control data-slide="prev" href="#carousel-example-generic" role="button"
-        span.glyphicon.glyphicon-chevron-left
-      a.right.carousel-control data-slide="next" href="#carousel-example-generic" role="button"
-        span.glyphicon.glyphicon-chevron-right
+/* .row */
+/*   .col-md-8.col-md-offset-2 */
+/*     .carousel.slide#carousel-example-generic data-ride='carousel' */
+/*       ol.carousel-indicators */
+/*         li.active data-slide-to="0" data-target="#carousel-example-generic" */
+/*         - (1..4).each do |idx| */
+/*           li data-slide-to="#{idx}" data-target="#carousel-example-generic" */
+
+/*       .carousel-inner */
+/*         .item.active */
+/*           img.img-responsive src="#{image_url 'front_1.jpg'}" */
+/*         - (2..5).each do |idx| */
+/*           .item */
+/*             img.img-responsive src=image_url("front_#{idx}.jpg") */
+
+/*       a.left.carousel-control data-slide="prev" href="#carousel-example-generic" role="button" */
+/*         span.glyphicon.glyphicon-chevron-left */
+/*       a.right.carousel-control data-slide="next" href="#carousel-example-generic" role="button" */
+/*         span.glyphicon.glyphicon-chevron-right */
 
 

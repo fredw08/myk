@@ -1,0 +1,13 @@
+= simple_form_for @post do |p|
+  .row
+    .col-md-8
+      = p.input :title
+    .col-md-4 = p.input :post_date, as: :string
+  .row
+    .col-md-12
+      = p.input :content
+
+  - unless readonly
+    .row
+      .col-md-12
+        = p.button :submit, class: 'btn btn-primary'
