@@ -1,0 +1,6 @@
+- list         ||= collection_instance
+- link_options ||= {}
+- additional_params ||= {}
+
+.pull-right = page_entries_info list
+= will_paginate list, link_options: link_options, params: additional_params

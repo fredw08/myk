@@ -1,0 +1,41 @@
+- add_link     = true  unless local_assigns.has_key?(:add_link)
+- edit_link    = true  unless local_assigns.has_key?(:edit_link)
+- back_link    = true  unless local_assigns.has_key?(:back_link)
+- show_title   = true  unless local_assigns.has_key?(:show_title)
+- custom_title = false unless local_assigns.has_key?(:custom_title)
+
+.page-title
+  - if show_title
+    h3 = custom_title || t_title
+  - if params[:action] == 'index' && add_link && can?(:create, resource_name.to_s.classify.constantize)
+    a(href=new_resource_path class='btn btn-info')
+      i.fa.fa-lg.fa-plus-square
+      |  New
+  - if params[:action] == 'show'
+    - if can?(:edit, resource_instance) && edit_link
+      a<(href=edit_resource_path class="btn btn-warning")
+        i.fa.fa-lg.fa-edit
+        |  Edit
+  - if %w(show).include?(params[:action])
+    a<(href=resources_path class='btn btn-default')
+      i.fa.fa-lg.fa-play.fa-flip-horizontal
+      |  Back
+    br
+  - if %w(new create edit update).include?(params[:action])
+    a<(href=polymorphic_path(resource_instance) class='btn btn-default')
+      i.fa.fa-lg.fa-play.fa-flip-horizontal
+      |  Back
+    br
+
+  = content_for :header_links
+
+- if params[:action] == 'index'
+  = form_for :search, html: {class: 'form-inline'}, method: :get do |f|
+    .pull-left
+      = content_for :header_pills
+    .pull-right
+      == hidden_search_fields
+      .input-group
+        = f.text_field :keyword, value: (params[:search] || {})[:keyword], class: "form-control"
+        span.input-group-btn: button.btn.btn-info(type='Submit'): i.fa.fa-search
+    .clearfix

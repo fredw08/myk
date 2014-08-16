@@ -22,6 +22,14 @@ html
   body
     = render 'layouts/top_menu'
     .container
+      - unless notice.blank?
+        .alert.alert-info
+          button.close type='button' data-dismiss='alert' &times;
+          = notice
+      - unless alert.blank?
+        .alert.alert-danger
+          button.close type='button' data-dismiss='alert' &times;
+          = alert
       == yield
 
     /* .push */
