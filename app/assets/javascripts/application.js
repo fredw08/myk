@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require angular
+//= require summernote.min
+//= require bootstrap-datepicker
+//= require angular-classy
+//= require app/init
 //= require_tree .

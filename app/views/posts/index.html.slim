@@ -4,8 +4,8 @@ table class=index_table_class
   thead: tr
     th Item
     th Title
-    th Content
     th Post Date
+    th Created At
     th
 
   tbody
@@ -13,8 +13,8 @@ table class=index_table_class
       tr
         td = item.id
         td = link_to item.title, polymorphic_path(item)
-        td = item.content
         td = item.post_date
+        td = datetime_format(item.created_at)
         td.link-icon.no-wrap
           a<>[href=edit_polymorphic_path(item) title='edit']: i.fa.fa-lg.fa-edit
           a<>[href=polymorphic_path(item) title='delete' data-confirm="Are you sure?" data-method=:delete]: i.fa.fa-lg.fa-times

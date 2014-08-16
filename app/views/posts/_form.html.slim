@@ -2,7 +2,7 @@
   .row
     .col-md-8
       = p.input :title
-    .col-md-4 = p.input :post_date, as: :string
+    .col-md-4 = p.input :post_date, as: :string, input_html: {class: 'myk-date-picker'}
   .row
     .col-md-12
       = p.input :content
@@ -11,3 +11,7 @@
     .row
       .col-md-12
         = p.button :submit, class: 'btn btn-primary'
+
+coffee:
+  $('#post_content').summernote
+    minHeight: 300

@@ -19,7 +19,7 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-  body
+  body ng-app='myk'
     = render 'layouts/top_menu'
     .container
       - unless notice.blank?
