@@ -1,22 +1,16 @@
 .row
   .col-md-8
-    - posts = []
-    - 5.times { posts << Post.new(title: 'testing', content: 'testing') }
-    - posts.each_with_index do |post, idx|
+    - @posts.each do |post|
       .panel.panel-info
         .panel-heading
           = post.title
         .panel-body
-          - if idx < 5
-            img.img-responsive src=image_url("front_#{idx + 1}.jpg")
+          = post.content.html_safe
         .panel-footer
-          .content
-            - 5.times
-              label = post.content
-          .foot-note
-            - 5.times
-              small = post.content
-              br
+          small(style="color: #333")
+            | updated @
+            = datetime_format(post.updated_at)
+
   .col-md-4
     = render 'share/menu'
 
